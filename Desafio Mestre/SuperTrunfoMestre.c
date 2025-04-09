@@ -58,8 +58,8 @@ int main() {
     pibcapA = (float) pibA / (popA / 1000000); // PIB em milhões
     pibcapB = (float) pibB / (popB / 1000000); // PIB em milhões
 
-    float superA = (float) areaA + popA + pibA + turistaA + densA + pibcapA;
-    float superB = (float) areaB + popB + pibB + turistaB + densB + pibcapB;
+    float superA = (float) areaA + popA + pibA + turistaA + (1 / densA) + pibcapA;
+    float superB = (float) areaB + popB + pibB + turistaB + (1 / densB) + pibcapB;
 
     //Variáveis de resultados
     int resultAREA = areaA > areaB;
