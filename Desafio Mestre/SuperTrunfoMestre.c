@@ -58,25 +58,19 @@ int main() {
     pibcapA = (float) pibA / (popA / 1000000); // PIB em milhões
     pibcapB = (float) pibB / (popB / 1000000); // PIB em milhões
 
-    float superA = (float) areaA + popA + pibA + turistaA + (1 / densA) + pibcapA;
-    float superB = (float) areaB + popB + pibB + turistaB + (1 / densB) + pibcapB;
-
-    //Variáveis de resultados
-    int resultAREA = areaA > areaB;
-    int resultPOP = popA > popB;
-    int resultPIB = pibA > pibB;
-    int resultTURISTA = turistaA > turistaB;
-    int resultDENS= densA < densB;
-    int resultPIBCAP = pibcapA > pibcapB;
-    int resultSuper = superA > superB;
+    float superA = (float) areaA + popA + pibA + turistaA + densA + pibcapA;
+    float superB = (float) areaB + popB + pibB + turistaB + densB + pibcapB;
 
     // Saída de dados no terminal
     printf("Carta A:\n Estado: %s\n Código: %s\n Nome: %s\n Área: %.2f km²\n População: %lu Habitantes\n PIB: R$ %.2f Milhões\n Pontos Turísticos: %d\n Densidade Populacional: %.2f hab/km²\n PIB per capita: R$ %.2f \n\n", estadoA, codigoA, nomeA, areaA, popA, pibA, turistaA, densA, pibcapA);
     printf("Carta B:\n Estado: %s\n Código: %s\n Nome: %s\n Área: %.2f km²\n População: %lu Habitantes\n PIB: R$ %.2f Milhões\n Pontos Turísticos: %d\n Densidade Populacional: %.2f hab/km²\n PIB per capita: R$ %.2f \n\n", estadoB, codigoB, nomeB, areaB, popB, pibB, turistaB, densB, pibcapB);
 
 
-    // Saída do resultado
-
-    printf("O vencedor será representado por um número (Carta A: 1 / Carta B: 0):\n\n Área: %d\n População: %d\n PIB: %d\n Pontos Turísticos: %d\n Densidade Populacional: %d\n PIB per capita: %d\n Super Poder: %d\n\n", resultAREA, resultPOP, resultPIB, resultTURISTA, resultDENS, resultPIBCAP, resultSuper);
+    // Resultado
+    if (areaA > areaB){
+        printf("A vencedora foi a Carta A com a maior Área!"); //caso a condição seja verdadeira
+    } else {
+        printf("A vencedora foi a Carta B com maior Área"); // caso a condição seja falsa
+    };
 
 }
