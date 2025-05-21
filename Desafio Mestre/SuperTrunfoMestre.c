@@ -1,12 +1,16 @@
 #include <stdio.h>
 
-int main() {
+int main()
+{
 
     // Declaração de variáveis
     char estadoA[50], codigoA[4], nomeA[50], estadoB[100], codigoB[4], nomeB[50];
     float areaA, pibA, densA, pibcapA, areaB, pibB, densB, pibcapB;
     int turistaA, turistaB;
     unsigned long int popA, popB;
+
+    // Variavel do switch
+    int resultado;
 
     // Entrada de dados
     printf("Carta A - Digite o Estado: ");
@@ -31,7 +35,7 @@ int main() {
     scanf("%d", &turistaA);
 
     printf("Carta B - Digite o Estado: ");
-    scanf("%99s",estadoB);
+    scanf("%99s", estadoB);
 
     printf("Carta B - Digite o Código: ");
     scanf("%3s", codigoB);
@@ -51,26 +55,89 @@ int main() {
     printf("Carta B - Digite a quantidade de pontos turísticos: ");
     scanf("%d", &turistaB);
 
-    //Cálculos
-    densA = (float) popA / areaA; //Força o resultado a ser convertido para Float
-    densB = (float) popB / areaB;
+    // Cálculos
+    densA = (float)popA / areaA; // Força o resultado a ser convertido para Float
+    densB = (float)popB / areaB;
 
-    pibcapA = (float) pibA / (popA / 1000000); // PIB em milhões
-    pibcapB = (float) pibB / (popB / 1000000); // PIB em milhões
+    pibcapA = (float)pibA / (popA / 1000000); // PIB em milhões
+    pibcapB = (float)pibB / (popB / 1000000); // PIB em milhões
 
-    float superA = (float) areaA + popA + pibA + turistaA + densA + pibcapA;
-    float superB = (float) areaB + popB + pibB + turistaB + densB + pibcapB;
+    float superA = (float)areaA + popA + pibA + turistaA + densA + pibcapA;
+    float superB = (float)areaB + popB + pibB + turistaB + densB + pibcapB;
 
     // Saída de dados no terminal
     printf("Carta A:\n Estado: %s\n Código: %s\n Nome: %s\n Área: %.2f km²\n População: %lu Habitantes\n PIB: R$ %.2f Milhões\n Pontos Turísticos: %d\n Densidade Populacional: %.2f hab/km²\n PIB per capita: R$ %.2f \n\n", estadoA, codigoA, nomeA, areaA, popA, pibA, turistaA, densA, pibcapA);
     printf("Carta B:\n Estado: %s\n Código: %s\n Nome: %s\n Área: %.2f km²\n População: %lu Habitantes\n PIB: R$ %.2f Milhões\n Pontos Turísticos: %d\n Densidade Populacional: %.2f hab/km²\n PIB per capita: R$ %.2f \n\n", estadoB, codigoB, nomeB, areaB, popB, pibB, turistaB, densB, pibcapB);
 
+    //Menu interativo
+    printf("Escolha uma opção: \n");
+    printf("1. Exibir novamente as informações \n");
+    printf("2. Área \n");
+    printf("3. População \n");
+    printf("4. PIB \n");
+    printf("5. Pontos turísticos \n");
+    printf("6. Densidade Populacional \n");
+    scanf("%d", &resultado);
 
-    // Resultado
-    if (areaA > areaB){
-        printf("A vencedora foi a Carta A com a maior Área!"); //caso a condição seja verdadeira
-    } else {
-        printf("A vencedora foi a Carta B com maior Área"); // caso a condição seja falsa
-    };
+    //Switch do resultado
+    switch (resultado){
+    case 1:
+        printf("Carta A:\n Estado: %s\n Código: %s\n Nome: %s\n Área: %.2f km²\n População: %lu Habitantes\n PIB: R$ %.2f Milhões\n Pontos Turísticos: %d\n Densidade Populacional: %.2f hab/km²\n PIB per capita: R$ %.2f \n\n", estadoA, codigoA, nomeA, areaA, popA, pibA, turistaA, densA, pibcapA);
+        printf("Carta B:\n Estado: %s\n Código: %s\n Nome: %s\n Área: %.2f km²\n População: %lu Habitantes\n PIB: R$ %.2f Milhões\n Pontos Turísticos: %d\n Densidade Populacional: %.2f hab/km²\n PIB per capita: R$ %.2f \n\n", estadoB, codigoB, nomeB, areaB, popB, pibB, turistaB, densB, pibcapB);
+        break;
+    case 2:
+        if (areaA > areaB) {
+            printf("Área: %.2f é maior que %.2f, %s venceu de %s", areaA, areaB, estadoA, estadoB);
+        } else if (areaB > areaA) {
+            printf("Área: %.2f é maior que %.2f, %s venceu de %s", areaB, areaA, estadoB, estadoA);
+        } else {
+            printf("Área: %.2f é igual a %.2f, %s e %s Empataram!", areaA, areaB, estadoA, estadoB);
+        }
 
+        break;
+
+    case 3:
+        if (popA > popB) {
+            printf("População: %lu é maior que %lu, %s venceu de %s", popA, popB, estadoA, estadoB);
+        } else if (popB > popA) {
+            printf("População: %lu é maior que %lu, %s venceu de %s", popB, popA, estadoB, estadoA);
+        } else {
+            printf("População: %lu é igual a %lu, %s e %s Empataram!", popA, popB, estadoA, estadoB);
+        }
+        break;
+
+    case 4:
+        if (pibA > pibB) {
+            printf("PIB: %.2f é maior que %.2f, %s venceu de %s", pibA, pibB, estadoA, estadoB);
+        } else if (pibB > pibA) {
+            printf("PIB: %.2f é maior que %.2f, %s venceu de %s", pibB, pibA, estadoB, estadoA);
+        } else {
+            printf("PIB: %.2f é igual a %.2f, %s e %s Empataram!", pibA, pibB, estadoA, estadoB);
+        }
+        break;
+
+    case 5:
+        if (turistaA > turistaB) {
+            printf("Pontos turísticos: %d é maior que %d, %s venceu de %s", turistaA, turistaB, estadoA, estadoB);
+        } else if (turistaB > turistaA) {
+            printf("Pontos turísticos: %d é maior que %d, %s venceu de %s", turistaB, turistaA, estadoB, estadoA);
+        } else {
+            printf("Pontos turísticos: %d é igual a %d, %s e %s Empataram!", turistaA, turistaB, estadoA, estadoB);
+        }
+        break;
+
+    case 6:
+        if (densA < densB) {
+            printf("Densidade populacional: %.2f é menor que %.2f, %s venceu de %s", densA, densB, estadoA, estadoB);
+        } else if (densB < densA) {
+            printf("Densidade populacional: %.2f é menor que %.2f, %s venceu de %s", densB, densA, estadoB, estadoA);
+        } else {
+            printf("Densidade populacional: %.2f é igual a %.2f, %s e %s Empataram!", densA, densB, estadoA, estadoB);
+        }
+        break;
+
+    default:
+        printf("Opção inválida");
+        break;
+    }
 }
